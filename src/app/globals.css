@@ -1,0 +1,145 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+}
+
+.dark {
+  --background: #0b0f19;
+  --foreground: #f8fafc;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Kiểu chữ in ấn chuẩn hóa theo yêu cầu */
+.font-arial-13-bold {
+  font-family: Arial, sans-serif !important;
+  font-size: 13pt !important;
+  font-weight: bold !important;
+  line-height: 1.5 !important;
+}
+
+.font-arial-12-bold {
+  font-family: Arial, sans-serif !important;
+  font-size: 12pt !important;
+  font-weight: bold !important;
+  line-height: 1.4 !important;
+}
+
+.font-arial-narrow-12 {
+  font-family: "Arial Narrow", Arial, sans-serif !important;
+  font-size: 12pt !important;
+  font-weight: normal !important;
+  line-height: 1.4 !important;
+}
+
+/* Định dạng in ấn khổ A4 */
+@page {
+  size: A4 portrait;
+  margin: 8mm 12mm;
+}
+
+@media print {
+  /* 1. Reset triệt để màu nền toàn bộ thẻ bao ngoài thành trong suốt hoặc trắng */
+  *,
+  *::before,
+  *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  html,
+  html.dark,
+  body,
+  body.dark,
+  #__next,
+  div,
+  main,
+  section,
+  article {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  /* 2. Ẩn tất cả các thành phần giao diện không cần in */
+  .no-print,
+  [data-no-print] {
+    display: none !important;
+  }
+
+  /* 3. Đảm bảo khung cha và section chứa báo giá luôn hiển thị 100% chiều rộng */
+  main {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .print-sheet-section {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: static !important;
+  }
+
+  .print-sheet-section * {
+    position: static !important;
+  }
+
+  /* 4. Định dạng tờ giấy in báo giá trắng sạch chuẩn văn bản A4 */
+  #quoteSheet,
+  .sheet {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    box-shadow: none !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: auto !important;
+  }
+
+  /* 5. Giữ màu sắc bảng biểu và tiêu đề khi in */
+  #quoteSheet thead tr {
+    background-color: #1e3a8a !important;
+    color: #ffffff !important;
+  }
+
+  #quoteSheet thead th {
+    color: #ffffff !important;
+  }
+
+  #quoteSheet th,
+  #quoteSheet td {
+    border-color: #475569 !important;
+  }
+
+  .print-break-inside-avoid {
+    break-inside: avoid;
+  }
+}

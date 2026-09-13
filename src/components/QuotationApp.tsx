@@ -419,7 +419,7 @@ export default function QuotationApp() {
       />
 
       {/* Mobile Tab Switcher */}
-      <div className="lg:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 py-2 flex items-center justify-center gap-2 sticky top-[61px] z-40 no-print transition-colors">
+      <div className="lg:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-3 py-2 flex items-center justify-center gap-2 sticky top-0 z-40 no-print transition-colors shadow-sm">
         <button
           onClick={() => setActiveMobileTab('editor')}
           className={`flex-1 py-2 px-3 rounded-lg text-xs font-bold flex items-center justify-center gap-1.5 transition ${
@@ -552,7 +552,7 @@ export default function QuotationApp() {
             activeMobileTab === 'preview' ? 'block' : 'hidden lg:block'
           } print:!block print:!w-full print:!max-w-full print:!m-0 print:!p-0`}
         >
-          <div className="sticky top-20 space-y-3 print:!static print:!space-y-0 print:!p-0 print:!m-0">
+          <div className="relative lg:sticky lg:top-20 space-y-3 print:!static print:!space-y-0 print:!p-0 print:!m-0">
             <div className="no-print flex items-center justify-between px-2 text-xs text-slate-500 dark:text-slate-400 font-medium">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-500"></span>

@@ -16,54 +16,64 @@ export const QuoteSheet: React.FC<QuoteSheetProps> = ({ customer, items, summary
   return (
     <div
       id="quoteSheet"
-      className="sheet bg-white print:!bg-white print:!text-black p-6 sm:p-8 md:p-10 rounded-2xl shadow-xl border border-slate-200/90 print:!border-none print:!shadow-none print:!p-0 print:!m-0 print:!rounded-none flex flex-col justify-between min-h-[860px] print:!min-h-0 text-slate-800"
+      className="sheet bg-white print:!bg-white print:!text-black p-3.5 sm:p-8 md:p-10 rounded-2xl shadow-xl border border-slate-200/90 print:!border-none print:!shadow-none print:!p-0 print:!m-0 print:!rounded-none flex flex-col justify-between min-h-auto sm:min-h-[860px] print:!min-h-0 text-slate-800"
     >
       <div>
         {/* Header Công ty & Tiêu đề Báo giá */}
-        <div className="text-center border-b border-slate-300 pb-4">
-          <h2 className="text-2xl sm:text-3xl font-black text-red-600 tracking-wide uppercase">
+        <div className="text-center border-b border-slate-300 pb-3 sm:pb-4">
+          <h2 className="text-lg sm:text-2xl md:text-3xl font-black text-red-600 tracking-wide uppercase">
             {COMPANY_INFO.name}
           </h2>
-          <p className="text-[13px] font-bold uppercase text-slate-800 mt-1">
+          <p className="text-xs sm:text-[13px] font-bold uppercase text-slate-800 mt-1">
             {COMPANY_INFO.address}
           </p>
-          <p className="text-[13px] font-bold text-slate-800">
+          <p className="text-xs sm:text-[13px] font-bold text-slate-800">
             HOTLINE: {COMPANY_INFO.hotline}
           </p>
 
-          <div className="mt-4 pt-2">
-            <h3 className="text-2xl sm:text-3xl font-black text-[#6600CC] tracking-wider uppercase">
+          <div className="mt-3 sm:mt-4 pt-1 sm:pt-2">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-[#6600CC] tracking-wider uppercase">
               BẢNG BÁO GIÁ
             </h3>
-            <p className="text-[13pt] font-bold text-slate-700 mt-1">
+            <p className="text-xs sm:text-[13pt] font-bold text-slate-700 mt-1">
               {customer.quoteCode || 'Số: T9-0001'}
             </p>
           </div>
         </div>
 
         {/* Thông tin Khách hàng & Công trình */}
-        <div className="grid grid-cols-2 py-3 border-b border-slate-300 text-slate-900 text-[13pt] font-bold gap-2">
-          <div>
-            <p>
-              Khách hàng: <span className="font-bold text-slate-900">{customer.name || '...........................................'}</span>
+        <div className="grid grid-cols-1 sm:grid-cols-2 print:!grid-cols-2 py-3 border-b border-slate-300 text-slate-900 text-xs sm:text-[13pt] font-bold gap-2 sm:gap-4">
+          <div className="space-y-1.5 min-w-0">
+            <p className="flex items-baseline gap-1.5 flex-wrap sm:flex-nowrap">
+              <span className="shrink-0 text-slate-700 font-bold">Khách hàng:</span>
+              <span className="font-bold text-slate-900 break-words sm:break-normal truncate sm:overflow-visible">
+                {customer.name || '...........................................'}
+              </span>
             </p>
-            <p className="mt-1">
-              Điện thoại: <span className="font-bold text-slate-900">{customer.phone || '...........................................'}</span>
+            <p className="flex items-baseline gap-1.5 flex-wrap sm:flex-nowrap">
+              <span className="shrink-0 text-slate-700 font-bold">Điện thoại:</span>
+              <span className="font-bold text-slate-900 break-words sm:break-normal truncate sm:overflow-visible">
+                {customer.phone || '...........................................'}
+              </span>
             </p>
           </div>
-          <div className="text-right">
-            <p>
-              Ngày lập: <span className="font-bold text-slate-900">{customer.date}</span>
+          <div className="space-y-1.5 sm:text-right min-w-0">
+            <p className="flex items-baseline gap-1.5 sm:justify-end flex-wrap sm:flex-nowrap">
+              <span className="shrink-0 text-slate-700 font-bold">Ngày lập:</span>
+              <span className="font-bold text-slate-900">{customer.date}</span>
             </p>
-            <p className="mt-1">
-              Địa chỉ: <span className="font-bold text-slate-900">{customer.address || 'TP. Hải Phòng'}</span>
+            <p className="flex items-baseline gap-1.5 sm:justify-end flex-wrap sm:flex-nowrap">
+              <span className="shrink-0 text-slate-700 font-bold">Địa chỉ:</span>
+              <span className="font-bold text-slate-900 break-words">
+                {customer.address || 'TP. Hải Phòng'}
+              </span>
             </p>
           </div>
         </div>
 
         {/* Bảng chi tiết hạng mục */}
-        <div className="mt-4 overflow-x-auto">
-          <table className="w-full text-[12pt] border border-slate-400 border-collapse">
+        <div className="mt-4 overflow-x-auto -mx-1 px-1 sm:mx-0 sm:px-0">
+          <table className="w-full min-w-[620px] sm:min-w-full print:!min-w-full text-xs sm:text-[12pt] border border-slate-400 border-collapse">
             <thead>
               <tr className="bg-[#1e3a8a] text-white font-bold">
                 <th className="p-2 border border-slate-400 text-center w-10">STT</th>
@@ -77,27 +87,27 @@ export const QuoteSheet: React.FC<QuoteSheetProps> = ({ customer, items, summary
             <tbody className="divide-y divide-slate-300">
               {items.map((item) => (
                 <tr key={item.id} className="hover:bg-slate-50/70 transition-colors">
-                  <td className="p-2 border border-slate-400 text-center font-bold">
+                  <td className="p-2 border border-slate-400 text-center font-bold whitespace-nowrap">
                     {item.stt}
                   </td>
                   <td className="p-2 border border-slate-400">
-                    <div className="font-black text-slate-900 text-[13pt] leading-snug">
+                    <div className="font-black text-slate-900 text-xs sm:text-[13pt] leading-snug">
                       {item.name}
                     </div>
-                    <div className="font-arial-12-bold text-slate-700 mt-0.5 leading-snug">
+                    <div className="font-arial-12-bold text-slate-700 mt-0.5 leading-snug text-[11px] sm:text-xs">
                       {item.spec}
                     </div>
                   </td>
-                  <td className="p-2 border border-slate-400 text-center font-bold">
+                  <td className="p-2 border border-slate-400 text-center font-bold whitespace-nowrap">
                     {item.qty}
                   </td>
-                  <td className="p-2 border border-slate-400 text-right font-bold">
+                  <td className="p-2 border border-slate-400 text-right font-bold whitespace-nowrap">
                     {item.kl}
                   </td>
-                  <td className="p-2 border border-slate-400 text-right">
+                  <td className="p-2 border border-slate-400 text-right whitespace-nowrap">
                     {formatVND(item.unitPrice)}
                   </td>
-                  <td className="p-2 border border-slate-400 text-right font-black text-slate-900">
+                  <td className="p-2 border border-slate-400 text-right font-black text-slate-900 whitespace-nowrap">
                     {formatVND(item.totalPrice)}
                   </td>
                 </tr>
@@ -113,29 +123,32 @@ export const QuoteSheet: React.FC<QuoteSheetProps> = ({ customer, items, summary
             </tbody>
           </table>
         </div>
+        <div className="sm:hidden text-[11px] text-slate-400 italic text-center mt-1 no-print">
+          ← Vuốt ngang để xem đầy đủ bảng giá →
+        </div>
 
         {/* Thông tin thanh toán & Tổng kết tài chính */}
-        <div className="flex flex-col sm:flex-row justify-between items-center sm:items-start mt-4 text-[12pt] gap-4 pt-1">
+        <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-start mt-4 text-xs sm:text-[12pt] gap-4 pt-1">
           {/* Mã QR thanh toán chuyển khoản */}
-          <div className="qr-container flex flex-col sm:flex-row items-center gap-4 p-3.5 rounded-xl border border-slate-300 bg-slate-50/60 print:bg-white print:border-slate-400 max-w-md">
+          <div className="qr-container flex flex-row items-center gap-3 p-3 rounded-xl border border-slate-300 bg-slate-50/60 print:bg-white print:border-slate-400 w-full sm:w-auto sm:max-w-md">
             <img
               src={QR_CODE_DATA_URL}
               alt="Mã QR Chuyển khoản VietinBank"
-              className="w-40 sm:w-44 h-auto object-contain rounded-xl border border-slate-200 print:border-slate-300 shadow-sm"
-              style={{ width: '170px', height: 'auto' }}
+              className="w-28 sm:w-44 h-auto object-contain rounded-xl border border-slate-200 print:border-slate-300 shadow-sm shrink-0"
+              style={{ width: '130px', height: 'auto' }}
             />
             <div className="text-left space-y-1">
-              <p className="text-[13pt] font-black text-slate-900 leading-tight uppercase">
+              <p className="text-xs sm:text-[13pt] font-black text-slate-900 leading-tight uppercase">
                 NGUYEN DINH CUONG
               </p>
-              <p className="text-[12pt] font-bold text-slate-800 leading-tight">
+              <p className="text-xs sm:text-[12pt] font-bold text-slate-800 leading-tight">
                 Ngân Hàng VietinBank
               </p>
             </div>
           </div>
 
           {/* Bảng tổng kết tài chính */}
-          <div className="w-80 space-y-1.5 text-right shrink-0">
+          <div className="w-full sm:w-80 space-y-1.5 text-right shrink-0">
             <div className="flex justify-between text-slate-700">
               <span>Cộng tiền hạng mục:</span>
               <span className="font-bold text-slate-900">{formatVND(summary.subtotal)}</span>
@@ -150,7 +163,7 @@ export const QuoteSheet: React.FC<QuoteSheetProps> = ({ customer, items, summary
                 {summary.vatRate > 0 ? formatVND(summary.vatAmount) : 'Chưa tính'}
               </span>
             </div>
-            <div className="flex justify-between border-t-2 border-slate-800 pt-2 font-black text-[14pt] text-[#1e3a8a]">
+            <div className="flex justify-between border-t-2 border-slate-800 pt-2 font-black text-sm sm:text-[14pt] text-[#1e3a8a]">
               <span>TỔNG THANH TOÁN:</span>
               <span>{formatVND(summary.grandTotal)}</span>
             </div>
@@ -166,11 +179,11 @@ export const QuoteSheet: React.FC<QuoteSheetProps> = ({ customer, items, summary
         </div>
 
         {/* Điều kiện thực hiện */}
-        <div className="mt-6 space-y-1 border-t border-slate-200 pt-3">
-          <p className="font-bold text-slate-900 text-[13pt] uppercase">
+        <div className="mt-4 sm:mt-6 space-y-1 border-t border-slate-200 pt-3">
+          <p className="font-bold text-slate-900 text-xs sm:text-[13pt] uppercase">
             ĐIỀU KIỆN THỰC HIỆN
           </p>
-          <div className="font-arial-narrow-12 text-slate-800 space-y-1">
+          <div className="font-arial-narrow-12 text-slate-800 space-y-1 text-[11px] sm:text-[12pt]">
             <p>
               • Phạm vi, vật liệu, bảo hành và hiệu lực: Cần xác nhận trước khi chốt báo giá.
             </p>
@@ -185,24 +198,24 @@ export const QuoteSheet: React.FC<QuoteSheetProps> = ({ customer, items, summary
       </div>
 
       {/* Phần chữ ký khách hàng & đơn vị */}
-      <div className="grid grid-cols-2 text-center mt-10 pt-4 border-t border-slate-200">
+      <div className="grid grid-cols-2 text-center mt-6 sm:mt-10 pt-4 border-t border-slate-200 text-xs sm:text-[13pt]">
         <div>
-          <p className="font-bold uppercase text-slate-900 text-[13pt]">
+          <p className="font-bold uppercase text-slate-900">
             XÁC NHẬN CỦA KHÁCH HÀNG
           </p>
-          <p className="font-arial-narrow-12 text-slate-700 mt-0.5">
+          <p className="font-arial-narrow-12 text-slate-700 mt-0.5 text-[11px] sm:text-xs">
             (Ký, ghi rõ họ tên)
           </p>
-          <div className="h-24"></div>
+          <div className="h-16 sm:h-24"></div>
         </div>
         <div>
-          <p className="font-bold uppercase text-slate-900 text-[13pt]">
+          <p className="font-bold uppercase text-slate-900">
             ĐƠN VỊ BÁO GIÁ
           </p>
-          <p className="font-arial-narrow-12 text-slate-700 mt-0.5">
+          <p className="font-arial-narrow-12 text-slate-700 mt-0.5 text-[11px] sm:text-xs">
             (Ký, ghi rõ họ tên & đóng dấu)
           </p>
-          <div className="h-24"></div>
+          <div className="h-16 sm:h-24"></div>
         </div>
       </div>
     </div>

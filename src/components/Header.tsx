@@ -36,23 +36,23 @@ export const Header: React.FC<HeaderProps> = ({
   };
 
   return (
-    <header className="bg-[#1e3a8a] dark:bg-[#0f1d42] text-white shadow-lg sticky top-0 z-50 no-print border-b border-blue-900/50 dark:border-blue-950 transition-colors">
-      <div className="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-3">
+    <header className="bg-[#1e3a8a] dark:bg-[#0f1d42] text-white shadow-lg relative lg:sticky lg:top-0 z-50 no-print border-b border-blue-900/50 dark:border-blue-950 transition-colors">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 py-2.5 sm:py-3 flex flex-wrap justify-between items-center gap-2.5 sm:gap-3">
         {/* Logo & Title */}
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-blue-600/60 dark:bg-blue-700/50 border border-blue-400/40 flex items-center justify-center text-xl font-black text-amber-300 shadow-inner">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-600/60 dark:bg-blue-700/50 border border-blue-400/40 flex items-center justify-center text-lg sm:text-xl font-black text-amber-300 shadow-inner shrink-0">
             ĐC
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h1 className="font-extrabold text-base md:text-lg tracking-wide uppercase">
+              <h1 className="font-extrabold text-sm sm:text-base md:text-lg tracking-wide uppercase">
                 QUẢNG CÁO & IN ĐÌNH CƯƠNG
               </h1>
               <span className="hidden sm:inline-block px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-amber-400 text-blue-950 rounded-full">
                 41 Hạng Mục Niêm Yết
               </span>
             </div>
-            <p className="text-xs text-blue-200 dark:text-blue-300/80">
+            <p className="text-[11px] sm:text-xs text-blue-200 dark:text-blue-300/80">
               Hệ thống bóc tách tự động · Ngã 3 Quán Ngái, xã Tân Kỳ, TP. Hải Phòng · 0934 066 099
             </p>
           </div>
@@ -155,19 +155,19 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Export Word */}
           <button
             onClick={handleExportWord}
-            className="bg-blue-600 hover:bg-blue-500 active:scale-95 text-white font-semibold px-3 py-2 rounded-xl shadow-sm text-xs md:text-sm flex items-center gap-1.5 transition border border-blue-400/30 cursor-pointer"
+            className="bg-blue-600 hover:bg-blue-500 active:scale-95 text-white font-semibold px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl shadow-sm text-xs md:text-sm flex items-center gap-1.5 transition border border-blue-400/30 cursor-pointer"
           >
-            <FileText className="w-4 h-4 text-blue-100" />
-            <span>Mục 1: Lưu & Tải Word</span>
+            <FileText className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-100" />
+            <span><span className="hidden sm:inline">Mục 1: </span>Lưu & Tải Word</span>
           </button>
 
           {/* Print / PDF */}
           <button
             onClick={handlePrint}
-            className="bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white font-semibold px-3.5 py-2 rounded-xl shadow-sm text-xs md:text-sm flex items-center gap-1.5 transition border border-emerald-400/30 cursor-pointer"
+            className="bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white font-semibold px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl shadow-sm text-xs md:text-sm flex items-center gap-1.5 transition border border-emerald-400/30 cursor-pointer"
           >
-            <Printer className="w-4 h-4 text-emerald-100" />
-            <span>Mục 2: Tải PDF / In</span>
+            <Printer className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-100" />
+            <span><span className="hidden sm:inline">Mục 2: </span>Tải PDF / In</span>
           </button>
         </div>
       </div>
